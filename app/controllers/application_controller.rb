@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  include ActionController::Serialization
 
   # requires authentication before pretty much any action on any model
   before_action :authenticate

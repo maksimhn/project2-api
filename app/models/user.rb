@@ -7,12 +7,13 @@ class User < ActiveRecord::Base
   # ensures email's uniqueness on AR level
   validates :email, uniqueness: true
 
-  # login action that happens
+  # login action that happens when we login (we call User.logn(email, pass))
   def self.login(email, password)
     user = find_by email: email
     user.login password if user
   end
 
+  # returning a token if all the previous actions of the chain ended successfully
   def login(password)
     authenticate(password) && set_token && save! && token
   end

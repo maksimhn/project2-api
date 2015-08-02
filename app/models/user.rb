@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_many: quizzes
-  has_many: words, through: :quizzes
+  has_many :quizzes
+  has_many :words, through: :quizzes
 
   # makes sure set_token gets called before creation
   before_create :set_token

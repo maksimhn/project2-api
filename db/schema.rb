@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150801175331) do
   enable_extension "plpgsql"
 
   create_table "quizzes", force: :cascade do |t|
-    t.text     "word"
+    t.boolean  "result"
     t.integer  "user_id"
     t.integer  "word_id"
     t.datetime "created_at", null: false
@@ -39,10 +39,8 @@ ActiveRecord::Schema.define(version: 20150801175331) do
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
   create_table "words", force: :cascade do |t|
-    t.text     "word"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "gender",     null: false
+    t.text   "word"
+    t.string "gender", null: false
   end
 
   add_index "words", ["word"], name: "index_words_on_word", unique: true, using: :btree

@@ -28,8 +28,20 @@ class UsersController < ApplicationController
     # render json: @user
   end
 
-  def find_all_the_unique_words
-    render { word: quiz.progress_stats }
+  def success_rate
+    render { rate: user.success_rate_stats }
+  end
+
+  def reset_score
+    if user.reset_contents
+      head :ok
+    else
+      render json: user.errors, status: :unprocessable_entity
+    end
+  end
+
+  def progress
+    render { stats: quiz.progress_stats }
   end
 
   # POST /users

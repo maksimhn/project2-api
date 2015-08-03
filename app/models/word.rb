@@ -4,7 +4,7 @@ class Word < ActiveRecord::Base
 
   def self.get_random_word
     random_noun = Word.all.sample
-    { noun: random_noun.word, gen: random_noun.gender }
+    render { noun: random_noun.word, gen: random_noun.gender }
   end
 
 end

@@ -21,6 +21,19 @@ class User < ActiveRecord::Base
     authenticate(password) && set_token && save! && token
   end
 
+  def success_rate_stats
+    hits = Float(self.quizzes.where(:result => true).length)
+    total_quizzes = Float(self.quizzes.length)
+    rate = hits / total_quizzes
+    rate.round(4) * 100
+  end
+
+
+  def reset_contents
+    self.quizzes.destroy_all
+  end
+
+
   private
 
   def set_token

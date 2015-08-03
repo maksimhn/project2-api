@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     # render json: @user
   end
 
+  def find_all_the_unique_words
+    render { word: quiz.progress_stats }
+  end
+
   # POST /users
   # POST /users.json
   def create

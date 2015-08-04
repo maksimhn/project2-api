@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     credentials = user_credentials
     token = User.login(credentials[:email], credentials[:password])
     if token
-      render json: { token: token }
+      render json: { token: token,
+                     rate: user.success_rate_stats,
+                     stats: quiz.progress_stats }
     else
       head :unauthorized
     end
@@ -28,8 +30,9 @@ class UsersController < ApplicationController
     # render json: @user
   end
 
-  def success_rate
-    render { rate: user.success_rate_stats }
+  def send_stats
+    render { rate: user.success_rate_stats,
+             stats: quiz.progress_stats }
   end
 
   def reset_score
@@ -38,10 +41,6 @@ class UsersController < ApplicationController
     else
       render json: user.errors, status: :unprocessable_entity
     end
-  end
-
-  def progress
-    render { stats: quiz.progress_stats }
   end
 
   # POST /users

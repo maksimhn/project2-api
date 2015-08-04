@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # we're using a => sign because our key is a string (part of the url)
   post '/login' => 'users#login'
+  get '/word' => 'words#get_random_word'
   resources :users, except: [:new, :edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

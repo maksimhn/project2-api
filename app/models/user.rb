@@ -28,6 +28,12 @@ class User < ActiveRecord::Base
     rate.round(4) * 100
   end
 
+  def progress_stats
+    word_count = Float(Word.all.length)
+    quizzed_count = Float(Quiz.all.uniq { |noun| noun.word_id }.length)
+    rate = quizzed_count / word_count
+    rate.round(4) * 100
+  end
 
   def reset_contents
     self.quizzes.destroy_all

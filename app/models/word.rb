@@ -3,8 +3,7 @@ class Word < ActiveRecord::Base
   has_many :users, through: :quizzes
 
   def self.get_random_word
-    random_noun = Word.all.sample
-    render { noun: random_noun.word, gen: random_noun.gender }
+    Word.all.sample
   end
 
 end

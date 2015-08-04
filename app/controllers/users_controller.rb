@@ -6,11 +6,12 @@ class UsersController < ApplicationController
   # POST /login
   def login
     credentials = user_credentials
+    @user = User.find_by(email: credentials[:email])
     token = User.login(credentials[:email], credentials[:password])
     if token
       render json: { token: token,
-                     rate: user.success_rate_stats,
-                     stats: quiz.progress_stats }
+                     rate: @user.success_rate_stats,
+                     stats: @user.progress_stats }
     else
       head :unauthorized
     end
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def send_stats
-    render { rate: user.success_rate_stats,
+    render json: { rate: user.success_rate_stats,
              stats: quiz.progress_stats }
   end
 

@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     if token
       render json: { token: token,
                      rate: @user.success_rate_stats,
-                     stats: @user.progress_stats }
+                     stats: @user.progress_stats,
+                     id: @user.id }
     else
       head :unauthorized
     end

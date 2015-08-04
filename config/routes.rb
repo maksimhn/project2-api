@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   post '/quizzes' => 'quizzes#create'
   get '/word' => 'words#random_word'
-  resources :users, except: [:new, :edit]
+  resources :users, :quizzes, except: [:new, :edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

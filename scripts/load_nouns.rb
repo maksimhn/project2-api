@@ -1,2 +1,2 @@
 
-\copy words(word, gender) FROM 'nouns.csv' WITH (FORMAT csv, HEADER true)
+\copy words(word, gender, pic) FROM 'nouns.csv' WITH (FORMAT csv, HEADER true)

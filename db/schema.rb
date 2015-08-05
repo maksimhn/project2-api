@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150801175331) do
   create_table "words", force: :cascade do |t|
     t.text   "word"
     t.string "gender", null: false
+    t.string "pic"
   end
 
   add_index "words", ["word"], name: "index_words_on_word", unique: true, using: :btree

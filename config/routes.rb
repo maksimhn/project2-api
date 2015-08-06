@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   post '/quizzes' => 'quizzes#create'
   get '/word' => 'words#random_word'
+  patch '/words/:id' => 'words#update'
   resources :users, :quizzes, except: [:new, :edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -40,12 +40,12 @@ class UsersController < ApplicationController
   end
 
   def reset_score
-    @user = User.find(params[:id])
-    if @user.reset_contents
-      head :ok
-    else
-      render json: user.errors, status: :unprocessable_entity
-    end
+    # @user = User.find(params[:id])
+    # if @user.reset_contents
+    #   head :ok
+    # else
+    #   render json: user.errors, status: :unprocessable_entity
+    # end
   end
 
   # POST /users
@@ -75,9 +75,13 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    # @user.destroy
-
-    # head :no_content
+    @user = User.find(params[:id])
+    @user.reset_contents
+    if @user.destroy
+      head :ok
+    else
+      render json: user.errors, status: :unprocessable_entity
+    end
   end
 
   private

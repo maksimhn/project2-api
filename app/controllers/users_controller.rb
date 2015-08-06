@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     if token
       render json: { token: token,
                      rate: @user.success_rate_stats,
+                     quizzes: @user.total_quizzes_stats,
                      stats: @user.progress_stats,
                      id: @user.id }
     else
@@ -34,11 +35,13 @@ class UsersController < ApplicationController
 
   def send_stats
     render json: { rate: user.success_rate_stats,
-             stats: quiz.progress_stats }
+             stats: quiz.progress_stats,
+             quizzes: user.total_quizzes_stats }
   end
 
   def reset_score
-    if user.reset_contents
+    @user = User.find(params[:id])
+    if @user.reset_contents
       head :ok
     else
       render json: user.errors, status: :unprocessable_entity

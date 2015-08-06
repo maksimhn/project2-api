@@ -25,14 +25,18 @@ class User < ActiveRecord::Base
     hits = Float(self.quizzes.where(:result => true).length)
     total_quizzes = Float(self.quizzes.length)
     rate = hits / total_quizzes
-    rate.round(4) * 100
+    rate.round(2) * 100
+  end
+
+  def total_quizzes_stats
+    Float(self.quizzes.length)
   end
 
   def progress_stats
     word_count = Float(Word.all.length)
     quizzed_count = Float(Quiz.all.uniq { |noun| noun.word_id }.length)
     rate = quizzed_count / word_count
-    rate.round(4) * 100
+    rate.round(2) * 100
   end
 
   def reset_contents

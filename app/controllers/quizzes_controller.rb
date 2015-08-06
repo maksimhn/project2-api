@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
   before_action :authenticate, only: [:login, :create]
 
+  # creates a new quiz, connects it to user, sends back renewed stats
   # POST /quizzes
   # POST /quizzes.json
   def create

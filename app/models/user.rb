@@ -16,11 +16,12 @@ class User < ActiveRecord::Base
     user.login password if user
   end
 
-  # returning a token if all the previous actions of the chain ended successfully
+  # returns a token if all the previous actions of the chain ended successfully
   def login(password)
     authenticate(password) && set_token && save! && token
   end
 
+  # returns current user's success rate
   def success_rate_stats
     hits = Float(self.quizzes.where(:result => true).length)
     total_quizzes = Float(self.quizzes.length)
@@ -28,10 +29,12 @@ class User < ActiveRecord::Base
     rate.round(2) * 100
   end
 
+  # returns total amount of quizzes taken by current user
   def total_quizzes_stats
     Float(self.quizzes.length)
   end
 
+  # returns progress percentage of a current user
   def progress_stats
     word_count = Float(Word.all.length)
     quizzed_count = Float(Quiz.all.uniq { |noun| noun.word_id }.length)
@@ -39,6 +42,7 @@ class User < ActiveRecord::Base
     rate.round(2) * 100
   end
 
+  # deletes all the quizzes taken by a current user
   def reset_contents
     self.quizzes.destroy_all
   end

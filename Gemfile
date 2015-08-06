@@ -17,6 +17,13 @@ gem 'active_model_serializers'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+group :production do
+     gem 'rails_12factor'
+     gem 'puma'
+end
+
+
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

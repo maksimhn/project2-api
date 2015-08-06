@@ -6,5 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+\copy words(word, gender, pic) FROM 'nouns.csv' WITH (FORMAT csv, HEADER true)
+
 
 end

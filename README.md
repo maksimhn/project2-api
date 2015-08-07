@@ -11,11 +11,23 @@ The app is written in Ruby. Rails framework implements the standart MVC app stru
 
 Users are allowed to create/delete login information, request words from the pool and update quizzes storage. They also can update noun's gender should they notice a mistake.
 
-Client-side application is located at:
+DB structure (ERDs) are accessible here:
+https://drive.google.com/file/d/0B4QTOXKp5fo1alJDa0p5emVTNEU/view?usp=sharing
+
+Client-side application is hosted at:
 http://maksimhn.github.io/Project2-FE-MD/
 
-LinkedIn profile:
-https://www.linkedin.com/in/mhranin
+Client-side GitHub repo can be found here:
+https://github.com/maksimhn/Project2-FE-MD
 
-August 2015
+Server-side application is hosted at:
+https://powerful-sands-2723.herokuapp.com
+
+Server-side GitHub repo can be found here:
+https://github.com/maksimhn/project2-api
+
+
+July 2015
 Maksim Hranin
+https://www.linkedin.com/in/mhranin
+General Assembly WDI student
